@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hh.iwen.mapper.BaseUserMapper" >
+  <resultMap id="BaseResultMap" type="com.hh.iwen.bean.BaseUser" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="profession" property="profession" jdbcType="INTEGER" />
+    <result column="competence" property="competence" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="CHAR" />
+    <result column="tel" property="tel" jdbcType="CHAR" />
+    <result column="addr" property="addr" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="INTEGER" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, profession, competence, gender, tel, addr, score, level, password, price
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from base_user
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from base_user
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.hh.iwen.bean.BaseUser" >
+    insert into base_user (id, name, profession, 
+      competence, gender, tel, 
+      addr, score, level, 
+      password, price)
+    values (#{id,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{profession,jdbcType=INTEGER}, 
+      #{competence,jdbcType=VARCHAR}, #{gender,jdbcType=CHAR}, #{tel,jdbcType=CHAR}, 
+      #{addr,jdbcType=VARCHAR}, #{score,jdbcType=INTEGER}, #{level,jdbcType=INTEGER}, 
+      #{password,jdbcType=VARCHAR}, #{price,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hh.iwen.bean.BaseUser" >
+    insert into base_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="profession != null" >
+        profession,
+      </if>
+      <if test="competence != null" >
+        competence,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="addr != null" >
+        addr,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null" >
+        #{profession,jdbcType=INTEGER},
+      </if>
+      <if test="competence != null" >
+        #{competence,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=CHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=CHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hh.iwen.bean.BaseUser" >
+    update base_user
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null" >
+        profession = #{profession,jdbcType=INTEGER},
+      </if>
+      <if test="competence != null" >
+        competence = #{competence,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=CHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=CHAR},
+      </if>
+      <if test="addr != null" >
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hh.iwen.bean.BaseUser" >
+    update base_user
+    set name = #{name,jdbcType=VARCHAR},
+      profession = #{profession,jdbcType=INTEGER},
+      competence = #{competence,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=CHAR},
+      tel = #{tel,jdbcType=CHAR},
+      addr = #{addr,jdbcType=VARCHAR},
+      score = #{score,jdbcType=INTEGER},
+      level = #{level,jdbcType=INTEGER},
+      password = #{password,jdbcType=VARCHAR},
+      price = #{price,jdbcType=CHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>
